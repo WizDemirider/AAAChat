@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class P2PMsg extends Model
+class GrpMsg extends Model
 {
     protected $guarded = [];
-    protected $table = 'p2pmsgs';
+    protected $table = 'grpmsgs';
 
     public function sender()
     {
@@ -16,6 +16,6 @@ class P2PMsg extends Model
 
     public function receiver()
     {
-        return $this->hasOne('User');
+        return $this->hasOne('Group');
     }
 }

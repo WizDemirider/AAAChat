@@ -21,32 +21,9 @@ $factory->define(User::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'profile_pic' => 'http://via.placeholder.com/150x150',
+        'profile_pic' => 'http://via.placeholder.com/150x150?text=User',
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
-    ];
-});
-
-$factory->define(App\P2PMsg::class, function (Faker $faker) {
-
-    $users = DB::select('select * from users');
-    $from = array();
-    $to = array();
-    foreach($users as $user) {
-        array_push($from, $user->phone);
-        array_push($to, $user->phone);
-    }
-    do
-    {
-        $rfrom = $from[array_rand($from)];
-        $rto = $to[array_rand($to)];
-    }
-    while($rfrom == $rto);
-
-    return [
-        'sender' => $rfrom,
-        'receiver' => $rto,
-        'message' => $faker->sentence,
     ];
 });

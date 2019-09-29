@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMessagesTable extends Migration
+class CreateGroupMessageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('P2PMsgs', function (Blueprint $table) {
+        Schema::create('grpmsgs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('sender');
             $table->foreign('sender')->references('phone')->on('users')->onDelete('CASCADE');
-            $table->string('receiver');
-            $table->foreign('receiver')->references('phone')->on('users')->onDelete('CASCADE');
+            $table->unsignedBigInteger('receiver');
+            $table->foreign('receiver')->references('id')->on('groups')->onDelete('CASCADE');
             $table->text('message')->nullable();
             $table->unsignedBigInteger('file')->nullable();
             $table->foreign('file')->references('id')->on('files');
@@ -33,6 +33,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('P2PMsgs');
+        Schema::dropIfExists('grpmsgs');
     }
 }
