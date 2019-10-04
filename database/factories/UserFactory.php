@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'phone' => $faker->phoneNumber,
+        'phone' => $faker->unique()->numberBetween($min = 1000000000, $max = 9999999999),
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'profile_pic' => 'http://via.placeholder.com/150x150?text=User',

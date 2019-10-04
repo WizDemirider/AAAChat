@@ -6,13 +6,19 @@ use App\GrpMsg;
 use Faker\Generator as Faker;
 
 $factory->define(GrpMsg::class, function (Faker $faker) {
-    $to = \App\Group::all()->random(1)->first();
+    $grp = \App\Group::all()->random(1)->first();
 
-    $from = $to->admin;
+    if(\App\GroupMembership::where('group', '=', $grp->id)->exists())
+    {
+        $user = \App\GroupMembership::where('group', '=', $grp->id)->get()->random(1)->first()->user;
+    }
+    else {
+        $user = $grp->admin;
+    }
 
     return [
-        'sender' => $from,
-        'receiver' => $to,
+        'sender' => $user,
+        'receiver' => $grp,
         'message' => $faker->sentence,
     ];
 });
