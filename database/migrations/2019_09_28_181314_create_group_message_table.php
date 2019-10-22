@@ -22,6 +22,7 @@ class CreateGroupMessageTable extends Migration
             $table->text('message')->nullable();
             $table->unsignedBigInteger('file')->nullable();
             $table->foreign('file')->references('id')->on('files');
+            $table->boolean('read');
             $table->timestamps();
         });
     }

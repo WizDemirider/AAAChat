@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class P2PMsg extends Model
 {
@@ -11,11 +12,11 @@ class P2PMsg extends Model
 
     public function sender()
     {
-        return $this->hasOne('User');
+        return $this->hasOne('App\User');
     }
 
     public function receiver()
     {
-        return $this->hasOne('User');
+        return $this->hasOne('App\User');
     }
 }

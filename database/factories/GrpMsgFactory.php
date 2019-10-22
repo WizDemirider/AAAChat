@@ -20,5 +20,6 @@ $factory->define(GrpMsg::class, function (Faker $faker) {
         'sender' => $user,
         'receiver' => $grp,
         'message' => $faker->sentence,
+        'read' => FALSE,
     ];
 });

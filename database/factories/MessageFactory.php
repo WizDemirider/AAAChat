@@ -25,5 +25,6 @@ $factory->define(P2PMsg::class, function (Faker $faker) {
         'sender' => $rfrom,
         'receiver' => $rto,
         'message' => $faker->sentence,
+        'read' => FALSE,
     ];
 });
