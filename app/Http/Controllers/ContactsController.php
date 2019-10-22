@@ -43,6 +43,9 @@ class ContactsController extends Controller
 
             $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
 
+            if(!$contact->profile_pic)
+                $contact->profile_pic = asset('img/blank.png');
+
             return $contact;
         });
 

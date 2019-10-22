@@ -9,7 +9,6 @@
                     <p class="name">{{ contact.name }}</p>
                     <p class="email">{{ contact.phone }}</p>
                 </div>
-                <!-- <span class="unread" v-if="contact.unread">{{ contact.unread }}</span> -->
             </li>
         </ul>
     </div>
@@ -54,7 +53,8 @@
     flex: 2;
     max-height: 100%;
     height: 600px;
-    overflow: scroll;
+    overflow: auto;
+    overflow-y: scroll;
     border-left: 1px solid #a6a6a6;
 
     ul {

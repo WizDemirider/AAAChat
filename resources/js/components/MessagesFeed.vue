@@ -44,7 +44,7 @@
     background: #f0f0f0;
     height: 100%;
     max-height: 470px;
-    overflow: scroll;
+    overflow: auto;
 
     ul {
         list-style-type: none;
